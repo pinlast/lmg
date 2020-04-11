@@ -1,0 +1,28 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "run Game in 2d_game_engine",
+            "command": "/usr/bin/g++",
+            "args": [
+                "${fileDirname}/*.cpp",
+                "${fileDirname}/*.h",
+                "`sdl2-config",
+                "--cflags",
+                "--libs`",
+                "-lSDL2",
+                "-lSDL2_mixer",
+                "-lSDL2_image",
+                "-lSDL2_ttf",
+                "-o",
+                "${fileDirname}/main.o",
+                "&&",
+                "${fileDirname}/main.o"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            }
+        }
+    ],
+    "version": "2.0.0"
+}
