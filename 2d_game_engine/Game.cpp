@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "Map.h"
 #include "ECS/Components.h"
+#include "ECS/Collision.h"
 
 Map* map;
 
@@ -11,6 +12,7 @@ SDL_Event Game::event;
 
 Manager manager;
 auto& player(manager.addEntity());
+auto& wall(manager.addEntity());
 
 Game::Game()
 {}
@@ -54,6 +56,11 @@ void Game::init(const char* title, int xpos, int ypos, int width, int hight, boo
     player.addComponent<TransformComponent>();
     player.addComponent<SpriteComponent>("/home/berg/Scripts/lmg/2d_game_engine/assets/player.png");
     player.addComponent<KeyboardController>();
+    player.addComponent<ColliderComponent>("player");
+
+    wall.addComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
+    wall.addComponent<SpriteComponent>("/home/berg/Scripts/lmg/2d_game_engine/assets/dirt.png");
+    wall.addComponent<ColliderComponent>("wall");
 }
 
 void Game::handleEvents()
